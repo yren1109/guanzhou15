@@ -10,13 +10,14 @@ Vue.prototype.$api = api;
 //第三方包
 import ElementUi from 'element-ui'
 import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost:8899'
+axios.defaults.baseURL = 'http://127.0.0.1:8899/'
 Vue.prototype.$http = axios
 
 //css
 import 'normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/less/index.less'
+import './css/style.css'
 
 // use
 Vue.use(ElementUi)

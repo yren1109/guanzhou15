@@ -1,6 +1,14 @@
 // 因为当前不是vue组件, 所以无法this.$http this.$api拿取东西, 只能单独导入使用
 import axios from 'axios';
-import api from '../js/api-config'
+import api from '../js/api-config.js'
+
+let noLoginCheckPage = [
+    "index",
+    "detail",
+    "list",
+    "shopcart"
+    
+]
 
 // 1. 先获取用户要去的页面
 // 2. 如果用户要去登陆页
@@ -9,6 +17,10 @@ import api from '../js/api-config'
 // 3.1 那么判断用户是不是登陆过了, 不是的话给他跳转到登陆页
 export default function(to, from, next) {
     var toPageName = to.name;
+
+    if(noLoginCheckPage.some(v=>v==toPageName)){
+        return next();
+    }
 
     // 请求接口判断用户有没有登陆
     axios.get(api.isLogin).then(res => {
